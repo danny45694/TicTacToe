@@ -21,10 +21,15 @@ function createPlayer() {
 
 
 // Control game logic
-function assignSymbols () {
-    let icon = [X , O];
+function assignSymbols (player1, player2) {
+    
     for(let i = 0; i > choices.length; i++) {
         let choice = Math.floor(Math.random() * 2);
+        
+        if(choice === 1) {
+        player1.symbol = "X";
+        player2.symbol = "O";
+        }
     }
 }
 
