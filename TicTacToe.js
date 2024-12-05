@@ -14,31 +14,43 @@ function gameBoard () {
 
 function createPlayer() {
     let player1 = {
-        name: prompt("Enter your name"),
-        symbol: symbol1,
-    }
+        name: prompt("Enter player1 name"),
+    };
+    let player2 = {
+        name: prompt("Enter player2 name"),
+    };
+    assignSymbols(player1, player2);
 }
 
 
 // Control game logic
 function assignSymbols (player1, player2) {
-    
-    for(let i = 0; i > choices.length; i++) {
-        let choice = Math.floor(Math.random() * 2);
-        
+    let choice = Math.floor(Math.random() * 2);
+    let symbol1 = "X";
+    let symbol2 = "O";
         if(choice === 1) {
-        player1.symbol = "X";
-        player2.symbol = "O";
+        player1.symbol = symbol1;
+        player2.symbol = symbol2;
         }
+        else {
+            player1.symbol = symbol2;
+            player2.symbol = symbol1;
     }
+ }
+
+// Game Logic
+
+function gamePlay(player1, player2) {
+
 }
-
-// Displaycontroller
-
 
 //Game start
     //Render gameboard, create players and display board
 
+function gameStart() {
+    let players = createPlayer(player1, player2);
+    console.log(players);
+}
 
 // Update board with choices and declare winner or tie
 
