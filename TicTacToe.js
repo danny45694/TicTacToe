@@ -8,15 +8,14 @@ function calculator(num1, num2) {
 
 // Create Players
 
-window.onload = gameStart();
-
 function gameStart() {
     let gameGrid = document.querySelectorAll('.grid-container')
-    createPlayers(); 
-    clearBoard();
-    assignSymbols(player1, player2);
-    goingFirst(player1, player2);
-    gamePlay(player1, player2);
+    let players = createPlayers();
+    console.log(player1, player2)
+    //clearBoard(gameGrid);
+    //assignSymbols(player1, player2);
+    //goingFirst(player1, player2);
+    //gamePlay(player1, player2);
 }
 
 function createPlayers() {
@@ -26,7 +25,7 @@ function createPlayers() {
     let player2 = {
         name: prompt("Enter player2 name"),
     };
-    return {player1, player2};
+    return {player1: player1, player2: player2};
 }
 
 
@@ -79,7 +78,7 @@ function clearBoard(gameGrid) {
 function gamePlay(player1, player2, gameGrid) {
     let player1MoveCount = 0;
     let player2MoveCount = 1;
-    const gameGrid = document.querySelectorAll('.grid-container').forEach(item => {
+    gameGrid.forEach(item => {
         item.addEventListener('click', event => {
             if(player1MoveCount > player2MoveCount) {
                 gameGrid.innerHTML = player1.symbol;
