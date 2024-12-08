@@ -5,16 +5,25 @@
 
 // Create Players
 
-function createPlayer() {
+window.onload = gameStart();
+
+function gameStart() {
+    let gameGrid = document.querySelectorAll('.grid-container')
+    createPlayers(); 
+    clearBoard();
+    assignSymbols(player1, player2);
+    goingFirst(player1, player2);
+    gamePlay(player1, player2);
+}
+
+function createPlayers() {
     let player1 = {
         name: prompt("Enter player1 name"),
     };
     let player2 = {
         name: prompt("Enter player2 name"),
     };
-    assignSymbols(player1, player2);
-    goingFirst(player1, player2);
-    console.log(player1, player2);
+    return {player1, player2};
 }
 
 
@@ -32,21 +41,6 @@ function assignSymbols (player1, player2) {
             player2.symbol = symbol1;
     }
  }
-
-// Game Logic
-
-// Gameboard factory function
-function gameBoard () {
-    const gameBoard = [];
-
-    gameBoard.forEach(section => {
-                                                                                                                                        
-    })
-    for(i = 0; i > 9; i++) {
-      //  const section = ();
-        gameBoard.push(section[i])
-    }
-}
 
 function goingFirst(player1, player2) {
     const heads = 1;
@@ -72,22 +66,40 @@ function gamePlay(player1, player2) {
 }
 
 //Game start
-    //Render gameboard, create players and display board
+    //Render gameboard, create players and display boardruby
 
-    function gameStart() {
-        let players = createPlayer(player1, player2);
-        console.log(players);
+function clearBoard(gameGrid) {
+    gameGrid.innerHTML = "";
     }
 
-function clearBoard() {
+function gamePlay(player1, player2, gameGrid) {
+    let player1MoveCount = 0;
+    let player2MoveCount = 1;
     const gameGrid = document.querySelectorAll('.grid-container').forEach(item => {
         item.addEventListener('click', event => {
-            if()
+            if(player1MoveCount > player2MoveCount) {
+                gameGrid.innerHTML = player1.symbol;
+            }
+            else {
+                gameGrid.innerHTML = player2.symbol;
+            }
         })
     })
 }
 
-// Update board with choices and declare winner or tie
+    // Update board with choices and declare winner or tie
 
+// Game Logic
 
-//game end. Option to reset
+// Gameboard factory function
+function gameBoard () {
+    const gameBoard = [];
+
+    gameBoard.forEach(section => {
+                                                                                                                                        
+    })
+    for(i = 0; i > 9; i++) {
+      //  const section = ();
+        gameBoard.push(section[i])
+    }
+}
