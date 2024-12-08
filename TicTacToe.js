@@ -1,31 +1,26 @@
 //Starting with Pseudocode
 
-function calculator(num1, num2) {
-    console.log( num1 + num2 )
-}
-
-
 
 // Create Players
 
 function gameStart() {
-    let gameGrid = document.querySelectorAll('.grid-container')
-    let players = createPlayers();
-    console.log(player1, player2)
-    //clearBoard(gameGrid);
-    //assignSymbols(player1, player2);
-    //goingFirst(player1, player2);
-    //gamePlay(player1, player2);
+    let gameGrid = document.querySelectorAll('.grid-item')
+    let player1 = {};
+    let player2 = {};
+    let moveCount1 = 0;
+    let moveCount2 = 1;
+    createPlayers(player1, player2); 
+    clearBoard(gameGrid);
+    assignSymbols(player1, player2);
+    goingFirst(player1, player2, moveCount1, moveCount2);
+    gamePlay(gameGrid, player1, player2, moveCount1, moveCount2);
 }
 
-function createPlayers() {
-    let player1 = {
-        name: prompt("Enter player1 name"),
-    };
-    let player2 = {
-        name: prompt("Enter player2 name"),
-    };
-    return {player1: player1, player2: player2};
+function createPlayers(player1, player2) {
+    player1.name = prompt("Enter player1 name");
+    player2.name = prompt("Enter player2 name");
+    console.log(player1, player2);
+    return {player1, player2}
 }
 
 
@@ -49,6 +44,10 @@ function goingFirst(player1, player2) {
     const heads = 1;
     const tails = 0;
     let player1Choice = prompt("Player 1: heads or tails");
+    /*    if(player1Choice != "heads" || "tails") {
+            player1Choice = prompt("Error! Choose heads to tails");
+        }
+    */
         if(player1Choice === "heads") {
             player1Choice = heads
         }
@@ -64,45 +63,42 @@ function goingFirst(player1, player2) {
         }
 }
 
-function gamePlay(player1, player2) {
-
-}
-
 //Game start
     //Render gameboard, create players and display boardruby
-
 function clearBoard(gameGrid) {
-    gameGrid.innerHTML = "";
-    }
+    gameGrid.forEach(item => {
+        item.innerHTML = "";
+        console.log(item);
+    })
+}
 
-function gamePlay(player1, player2, gameGrid) {
-    let player1MoveCount = 0;
-    let player2MoveCount = 1;
+
+
+/* function testing() {
+const nodeList = document.querySelectorAll('.grid-item')
+
+    nodeList.forEach(node => {
+        console.log(node);
+    })
+}
+*/
+
+
+function gamePlay(player1, player2, gameGrid, moveCount1, moveCount2) {
     gameGrid.forEach(item => {
         item.addEventListener('click', event => {
-            if(player1MoveCount > player2MoveCount) {
-                gameGrid.innerHTML = player1.symbol;
+            if(moveCount1 > moveCount2) {
+                item.innerHTML = player1.symbol;
+                moveCount1 += 1;
             }
             else {
-                gameGrid.innerHTML = player2.symbol;
+                item.innerHTML = player2.symbol;
+                moveCount2 += 1;
             }
         })
     })
 }
 
-    // Update board with choices and declare winner or tie
 
-// Game Logic
 
-// Gameboard factory function
-function gameBoard () {
-    const gameBoard = [];
-
-    gameBoard.forEach(section => {
-                                                                                                                                        
-    })
-    for(i = 0; i > 9; i++) {
-      //  const section = ();
-        gameBoard.push(section[i])
-    }
-}
+// Update board with choices and declare winner or tie
