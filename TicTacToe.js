@@ -1,5 +1,8 @@
 //Starting with Pseudocode
 
+function calculator(num1, num2) {
+    console.log( num1 + num2 )
+}
 
 
 
@@ -41,6 +44,7 @@ function assignSymbols (player1, player2) {
             player2.symbol = symbol1;
     }
  }
+
 
 function goingFirst(player1, player2) {
     const heads = 1;
