@@ -87,6 +87,7 @@ const nodeList = document.querySelectorAll('.grid-item')
 function gamePlay(player1, player2, gameGrid, moveCount1, moveCount2) {
     gameGrid.forEach(item => {
         item.addEventListener('click', event => {
+            
             if(moveCount1 > moveCount2) {
                 item.innerHTML = player1.symbol;
                 moveCount1 += 1;
