@@ -4,34 +4,69 @@
 // Create Players
 
 function gameStart() {
-    let gameGrid = document.querySelectorAll('.grid-item')
+    const gameGrid = document.querySelectorAll('.grid-item')
+    clearBoard(gameGrid);
+    return gameGrid;
+}
+
+const players = (function() {
     let player1 = {};
     let player2 = {};
     createPlayers(player1, player2); 
-    clearBoard(gameGrid);
     assignSymbols(player1, player2);
     goingFirst(player1, player2);
+    return {player1, player2}; 
+})
+
+const gameGrid = (function() {
+    const gameGrid = document.querySelectorAll('.grid-item')
+
+    const gameReset = () => {
+        for (let i = 0; i < board.length; i++) {
+            board[i] = "";
+        }
+    }
+    return gameGrid
+})
     
     // This bottom forEach function appears to have a different scope.
     // Console.log is not logging anything which means the code after the 
     //click does not register.
-    
-   gameGrid.forEach(item => {
-        item.addEventListener('click', (player1, player2) => {
-            gameGrid.forEach(item => {
-                    console.log(player1, player2)
-                    if(player1.moveCount > player2.moveCount) {
-                        item.innerHTML - player1.symbol;
-                        moveCount += 1;
-                    }
-                    else {
-                        item.innerHTML = player2.symbol;
-                        moveCount +=1;
-                    }
-                })
+
+function gamePlay(player1, player2, gameGrid, moveCount1, moveCount2) {
+    gameGrid.forEach(item => {
+        item.addEventListener('click', () => {
+            
+            if(moveCount1 > moveCount2) {
+                item.innerHTML = player1.symbol;
+                moveCount1 += 1;
+            }
+            else {
+                item.innerHTML = player2.symbol;
+                moveCount2 += 1;
+            }
+        })
+    })
+}
+
+
+
+gameGrid.forEach(item => {
+    item.addEventListener('click', event => {
+        gameGrid.forEach(item => {
+                console.log(player1, player2)
+                if(player1.moveCount > player2.moveCount) {
+                    item.innerHTML - player1.symbol;
+                    player1.moveCount += 1;
+                }
+                else {
+                    item.innerHTML = player2.symbol;
+                    player2.moveCount +=1;
+                }
             })
         })
-    }
+    })
+    
     //gamePlay(gameGrid, player1, player2, moveCount1, moveCount2);
 
 
@@ -110,21 +145,7 @@ const nodeList = document.querySelectorAll('.grid-item')
 
 
 
-function gamePlay(player1, player2, gameGrid, moveCount1, moveCount2) {
-    gameGrid.forEach(item => {
-        item.addEventListener('click', event => {
-            
-            if(moveCount1 > moveCount2) {
-                item.innerHTML = player1.symbol;
-                moveCount1 += 1;
-            }
-            else {
-                item.innerHTML = player2.symbol;
-                moveCount2 += 1;
-            }
-        })
-    })
-}
+
 
 
 
