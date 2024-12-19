@@ -8,7 +8,7 @@ function gameStart() {
     playerNames();
     assignSymbols();
     goingFirst();
-
+    doICheckWinner = false;
 
     gameGrid.forEach(item => {
         item.addEventListener('click', () => {
@@ -26,22 +26,26 @@ function gameStart() {
                     player2.moveCount += 1;
                     turnCount++
             }
+            if(turnCount == 9) {
+                checkWinner();
+            }
         })
     })
 
-while(turnCount === 9) {
+}
+
+
+function checkWinner() {
+    const gameGrid = document.querySelectorAll(".grid-item")
     gameGrid.forEach(item => {
         const value = item.dataset.value; // Access the data-value attribute
         console.log(`Value: ${value}, Text: ${item.textContent}`);
-        return
-    });
-}
+
+    })
 }
 
 
 // Program Win Condition and checks against using same square
-
-function winCondition() {
     
     /* If X or O are in the followings locations, you win. 
     1,2,3
@@ -53,7 +57,7 @@ function winCondition() {
     1,5,9
     3,5,7 
     */
-}
+
 
 
 
