@@ -3,6 +3,7 @@ let player2 = {};
 
 function gameStart() {
     const gameGrid = document.querySelectorAll('.grid-item')
+    turnCount = 0;
     clearBoard(gameGrid);
     playerNames();
     assignSymbols();
@@ -18,19 +19,30 @@ function gameStart() {
             if(player1.moveCount < player2.moveCount) {
                     item.innerHTML = player1.symbol;
                     player1.moveCount += 1;
+                    turnCount++
             }
             else {
                     item.innerHTML = player2.symbol;
                     player2.moveCount += 1;
+                    turnCount++
             }
         })
     })
+
+while(turnCount === 9) {
+    gameGrid.forEach(item => {
+        const value = item.dataset.value; // Access the data-value attribute
+        console.log(`Value: ${value}, Text: ${item.textContent}`);
+        return
+    });
+}
 }
 
 
 // Program Win Condition and checks against using same square
 
 function winCondition() {
+    
     /* If X or O are in the followings locations, you win. 
     1,2,3
     4,5,6 
