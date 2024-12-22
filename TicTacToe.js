@@ -40,14 +40,31 @@ function checkWinner() {
     gameGrid.forEach(item => {
         const value = item.dataset.value; // Access the data-value attribute
         console.log(`Value: ${value}, Text: ${item.textContent}`);
+    
+        if(item.textContent == player1.symbol || player2.symbol && item.dataset.value == 1, 2, 3) 
+        {
+            alert ("player wins!")
+        }
+        }
+   )}
 
-    })
+
+function winCondition() {
+    const gameGrid = document.querySelectorAll(".grid-container")
+    for(i = 0; i < gameGrid.length; i++) {
+        console.log(gameGrid[i]);
+    }
 }
-
 
 // Program Win Condition and checks against using same square
     
     /* If X or O are in the followings locations, you win. 
+
+    The dataset value returns a number but I am unsure if I can use that as an identifier for the 
+    griditem. I am considering using a calling the parent container and using a
+    for loop may be the ideal solution here. 
+
+
     1,2,3
     4,5,6 
     7,8,9
