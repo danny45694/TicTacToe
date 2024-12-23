@@ -52,9 +52,12 @@ function checkWinner() {
 function winCondition() {
     const gameGrid = document.querySelectorAll(".grid-container")
     for(i = 0; i < gameGrid.length; i++) {
-        console.log(gameGrid[i]);
+        if(gameGrid[0,1,2] === "X" || gameGrid[0,1,2] === "O")
+        console.log("player Wins!")
+        alert("Player wins!")
     }
 }
+
 
 // Program Win Condition and checks against using same square
     
