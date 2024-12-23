@@ -27,7 +27,7 @@ function gameStart() {
                     turnCount++
             }
             if(turnCount == 9) {
-                checkWinner();
+                winCondition();
             }
         })
     })
@@ -50,11 +50,23 @@ function checkWinner() {
 
 
 function winCondition() {
-    const gameGrid = document.querySelectorAll(".grid-container")
-    for(i = 0; i < gameGrid.length; i++) {
-        if(gameGrid[0,1,2] === "X" || gameGrid[0,1,2] === "O")
-        console.log("player Wins!")
-        alert("Player wins!")
+    const gameGrid = document.querySelectorAll(".grid-item")
+    
+    const cell0 = gameGrid[0].innerHTML;
+    const cell1 = gameGrid[1].innerHTML;
+    const cell2 = gameGrid[2].innerHTML;
+    const cell3 = gameGrid[3].textContent;
+    const cell4 = gameGrid[4].textContent;
+    const cell5 = gameGrid[5].textContent;
+    const cell6 = gameGrid[6].textContent;
+    const cell7 = gameGrid[7].textContent;
+    const cell8 = gameGrid[8].textContent;
+
+
+    if (cell0 === cell1 && cell1 === cell2 && (cell0 === "X" || cell0 === "O")) {
+        console.log(cell0, cell1, cell2)
+        alert("Player Wins!");
+    
     }
 }
 
