@@ -52,25 +52,59 @@ function checkWinner() {
 function winCondition() {
     const gameGrid = document.querySelectorAll(".grid-item")
     
-    const cell0 = gameGrid[0].innerHTML;
-    const cell1 = gameGrid[1].innerHTML;
-    const cell2 = gameGrid[2].innerHTML;
-    const cell3 = gameGrid[3].textContent;
-    const cell4 = gameGrid[4].textContent;
-    const cell5 = gameGrid[5].textContent;
-    const cell6 = gameGrid[6].textContent;
-    const cell7 = gameGrid[7].textContent;
-    const cell8 = gameGrid[8].textContent;
+    const cell1 = gameGrid[0].innerHTML;
+    const cell2 = gameGrid[1].innerHTML;
+    const cell3 = gameGrid[2].innerHTML;
+    const cell4 = gameGrid[3].innerHTML;
+    const cell5 = gameGrid[4].innerHTML;
+    const cell6 = gameGrid[5].innerHTML;
+    const cell7 = gameGrid[6].innerHTML;
+    const cell8 = gameGrid[7].innerHTML;
+    const cell9 = gameGrid[8].innerHTML;
 
-
-    if (cell0 === cell1 && cell1 === cell2 && (cell0 === "X" || cell0 === "O")) {
-        console.log(cell0, cell1, cell2)
-        alert("Player Wins!");
-    
+    switch(true) {
+        case (cell1 === cell2 && cell2 === cell3 && (cell1 === "X" || cell1 === "O")): {
+            console.log(cell1,cell2, cell3)
+            alert("Player Wins!")
+            break;
+        }
+        case (cell4 === cell5 && cell5 === cell6 && (cell4 === "X" || cell4 === "O")): {
+            console.log(cell4,cell5,cell6)
+            alert("Player Wins!")
+            break;
+        }
+        case (cell7 === cell8 && cell8 === cell9 && (cell7 === "X" || cell7 === "O")): {
+            console.log(cell7,cell8,cell9)
+            alert("Player Wins!")
+            break;
+        }
+        case (cell1 === cell4 && cell4 === cell7 && (cell1 === "X" || cell1 === "O")): {
+            console.log(cell1,cell4,cell7)
+            alert("Player Wins!")
+            break;
+        }
+        case (cell2 === cell5 && cell5 === cell8 && (cell2 === "X" || cell2 === "O")): {
+            console.log(cell2,cell5,cell8)
+            alert("Player Wins!")
+            break;
+        }
+        case (cell3 === cell6 && cell6 === cell9 && (cell3 === "X" || cell3 === "O")): {
+            console.log(cell3,cell6,cell9)
+            alert("Player Wins!")
+            break;
+        }
+        case (cell1 === cell5 && cell5 === cell9 && (cell1 === "X" || cell1 === "O")): {
+            console.log(cell1,cell5,cell9)
+            alert("Player Wins!")
+            break;
+        }
+        case (cell3 === cell5 && cell5 === cell7 && (cell3 === "X" || cell3 === "O")): {
+            console.log(cell3,cell5,cell7)
+            alert("Player Wins!")
+            break;
+        }
     }
 }
-
-
 // Program Win Condition and checks against using same square
     
     /* If X or O are in the followings locations, you win. 
