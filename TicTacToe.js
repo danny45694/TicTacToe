@@ -1,6 +1,12 @@
 let player1 = {};
 let player2 = {};
 
+let startBtn = document.querySelector('#startGame');
+
+startBtn.addEventListener('click', () => {
+    gameStart();
+})
+
 function gameStart() {
     const gameGrid = document.querySelectorAll('.grid-item')
     turnCount = 0;
@@ -12,41 +18,27 @@ function gameStart() {
 
     gameGrid.forEach(item => {
         item.addEventListener('click', () => {
-            if(item.innerHTML === "X" || item.innerHTML === "O") {
-                alert("Space taken. Click on a different space")
+            while(item.innerHTML === "X" || item.innerHTML === "O") {
+                alert("Space taken. Click on a different space");
                 return
             }
-            if(player1.moveCount < player2.moveCount) {
+                if(player1.moveCount < player2.moveCount) {
                     item.innerHTML = player1.symbol;
                     player1.moveCount += 1;
                     turnCount++
-            }
-            else {
+                }
+                else {
                     item.innerHTML = player2.symbol;
                     player2.moveCount += 1;
                     turnCount++
-            }
-            if(turnCount == 9) {
-                winCondition();
-            }
+                }
+                if(turnCount == 9) {
+                    winCondition();
+                }
         })
     })
 
 }
-
-
-function checkWinner() {
-    const gameGrid = document.querySelectorAll(".grid-item")
-    gameGrid.forEach(item => {
-        const value = item.dataset.value; // Access the data-value attribute
-        console.log(`Value: ${value}, Text: ${item.textContent}`);
-    
-        if(item.textContent == player1.symbol || player2.symbol && item.dataset.value == 1, 2, 3) 
-        {
-            alert ("player wins!")
-        }
-        }
-   )}
 
 
 function winCondition() {
@@ -63,45 +55,90 @@ function winCondition() {
     const cell9 = gameGrid[8].innerHTML;
 
     switch(true) {
-        case (cell1 === cell2 && cell2 === cell3 && (cell1 === "X" || cell1 === "O")): {
+        
+        case (cell1 === cell2 && cell2 === cell3 && (cell1 === "X")): {
             console.log(cell1,cell2, cell3)
-            alert("Player Wins!")
+            alert("Player 1 Wins!")
             break;
         }
-        case (cell4 === cell5 && cell5 === cell6 && (cell4 === "X" || cell4 === "O")): {
+        case (cell1 === cell2 && cell2 === cell3 && (cell1 === "O")): {
+            console.log(cell1,cell2, cell3)
+            alert("Player 2 Wins!")
+            break;
+        }
+        case (cell4 === cell5 && cell5 === cell6 && (cell4 === "X")): {
             console.log(cell4,cell5,cell6)
-            alert("Player Wins!")
+            alert("Player 1 Wins!")
             break;
         }
-        case (cell7 === cell8 && cell8 === cell9 && (cell7 === "X" || cell7 === "O")): {
+        case (cell4 === cell5 && cell5 === cell6 && (cell4 === "O")): {
+            console.log(cell4,cell5,cell6)
+            alert("Player 2 Wins!")
+            break;
+        }
+        case (cell7 === cell8 && cell8 === cell9 && (cell7 === "X")): {
             console.log(cell7,cell8,cell9)
-            alert("Player Wins!")
+            alert("Player 1 Wins!")
             break;
         }
-        case (cell1 === cell4 && cell4 === cell7 && (cell1 === "X" || cell1 === "O")): {
+        case (cell7 === cell8 && cell8 === cell9 && (cell7 === "O")): {
+            console.log(cell7,cell8,cell9)
+            alert("Player 2 Wins!")
+            break;
+        }
+        case (cell1 === cell4 && cell4 === cell7 && (cell1 === "X")): {
             console.log(cell1,cell4,cell7)
-            alert("Player Wins!")
+            alert("Player 1 Wins!")
             break;
         }
-        case (cell2 === cell5 && cell5 === cell8 && (cell2 === "X" || cell2 === "O")): {
+        case (cell1 === cell4 && cell4 === cell7 && (cell1 === "O")): {
+            console.log(cell1,cell4,cell7)
+            alert("Player 2 Wins!")
+            break;
+        }
+        case (cell2 === cell5 && cell5 === cell8 && (cell2 === "X")): {
             console.log(cell2,cell5,cell8)
-            alert("Player Wins!")
+            alert("Player 1 Wins!")
             break;
         }
-        case (cell3 === cell6 && cell6 === cell9 && (cell3 === "X" || cell3 === "O")): {
+        case (cell2 === cell5 && cell5 === cell8 && (cell2 === "O")): {
+            console.log(cell2,cell5,cell8)
+            alert("Player 2 Wins!")
+            break;
+        }
+        case (cell3 === cell6 && cell6 === cell9 && (cell3 === "X")): {
             console.log(cell3,cell6,cell9)
-            alert("Player Wins!")
+            alert("Player 1 Wins!")
             break;
         }
-        case (cell1 === cell5 && cell5 === cell9 && (cell1 === "X" || cell1 === "O")): {
+        case (cell3 === cell6 && cell6 === cell9 && (cell3 === "O")): {
+            console.log(cell3,cell6,cell9)
+            alert("Player 2 Wins!")
+            break;
+        }
+        case (cell1 === cell5 && cell5 === cell9 && (cell1 === "X")): {
             console.log(cell1,cell5,cell9)
-            alert("Player Wins!")
+            alert("Player 1 Wins!")
             break;
         }
-        case (cell3 === cell5 && cell5 === cell7 && (cell3 === "X" || cell3 === "O")): {
-            console.log(cell3,cell5,cell7)
-            alert("Player Wins!")
+        case (cell1 === cell5 && cell5 === cell9 && (cell1 === "O")): {
+            console.log(cell1,cell5,cell9)
+            alert("Player 2 Wins!")
             break;
+        }
+        case (cell3 === cell5 && cell5 === cell7 && (cell3 === "X")): {
+            console.log(cell3,cell5,cell7)
+            alert("Player 1 Wins!")
+            break;
+        }
+        case (cell3 === cell5 && cell5 === cell7 && (cell3 === "O")): {
+            console.log(cell3,cell5,cell7)
+            alert("Player 2 Wins!")
+            break;
+        }
+        case (cell1 !== cell2 || cell2 !== cell3): {
+            console.log("It is a tie!")
+            alert("It is a tie!")
         }
     }
 }
@@ -124,27 +161,16 @@ function winCondition() {
     3,5,7 
     */
 
-
-
-
-
 function playerNames() {
     player1.name = prompt("Enter player1 name");
     player2.name = prompt("Enter player2 name");
 }
 
 function assignSymbols () {
-    let choice = Math.floor(Math.random() * 2);
     let symbol1 = "X";
     let symbol2 = "O";
-        if(choice === 1) {
-        player1.symbol = symbol1;
-        player2.symbol = symbol2;
-        }
-        else {
-            player1.symbol = symbol2;
-            player2.symbol = symbol1;
-    }
+    player1.symbol = symbol1;
+    player2.symbol = symbol2;
     }
 
 function goingFirst() {
@@ -153,10 +179,9 @@ function goingFirst() {
     player1.moveCount = 0;
     player2.moveCount = 1;
     let player1Choice = prompt("Player 1: heads or tails");
-    /*    if(player1Choice != "heads" || "tails") {
+        if(player1Choice !== "heads" || "tails") {
             player1Choice = prompt("Error! Choose heads to tails");
         }
-    */
         if(player1Choice === "heads") {
             player1Choice = heads
         }
@@ -172,9 +197,7 @@ function goingFirst() {
             player1.moveCount = 1;
             alert("player 2 goes first");
         }
-}
-
-
+    }
 
 
 //Game start
@@ -185,13 +208,3 @@ function clearBoard(gameGrid) {
         console.log(item);
     })
 }
-
-
-
-
-
-
-
-
-
-// Update board with choices and declare winner or tie
