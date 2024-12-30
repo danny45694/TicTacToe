@@ -32,7 +32,8 @@ function gameStart() {
                     player2.moveCount += 1;
                     turnCount++
                 }
-                if(turnCount == 9) {
+                if(turnCount == 5 || turnCount == 9) {
+                    console.log(turnCount)
                     winCondition();
                 }
         })
@@ -136,7 +137,7 @@ function winCondition() {
             alert("Player 2 Wins!")
             break;
         }
-        case (cell1 !== cell2 || cell2 !== cell3): {
+        case (cell1 !== cell2 || cell2 !== cell3 && turnCount == 9): {
             console.log("It is a tie!")
             alert("It is a tie!")
         }
